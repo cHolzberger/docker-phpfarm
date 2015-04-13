@@ -8,7 +8,7 @@ FROM debian:wheezy
 MAINTAINER Christian Holzberger, ch@mosaiksoftware.de
 
 # get sources 
-COPY wheezy-source.list /etc/apt/sources.list.d/wheezy-source.list
+COPY wheezy-source.list /etc/apt/sources.list
 # add some build tools
 RUN apt-get update && \
     apt-get install -y \
