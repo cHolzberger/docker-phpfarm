@@ -5,7 +5,7 @@
 # we use Debian as the host OS
 FROM debian:wheezy
 
-MAINTAINER Andreas Gohr, andi@splitbrain.org
+MAINTAINER Christian Holzberger, ch@mosaiksoftware.de
 
 # add some build tools
 RUN apt-get update && \
@@ -30,7 +30,7 @@ RUN apt-get update && \
     libmcrypt-dev \
     libt1-dev \
     libltdl-dev \
-    libmhash-dev
+    libmhash-dev && apt-get build-dep php5
 
 # install and run the phpfarm script
 RUN git clone git://git.code.sf.net/p/phpfarm/code phpfarm
