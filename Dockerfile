@@ -34,7 +34,7 @@ RUN apt-get update && \
     libltdl-dev \
     libmhash-dev && apt-get build-dep -y php5
 # wkhtmltopdf offical binary
-RUN wget http://downloads.sourceforge.net/project/wkhtmltopdf/0.12.2.1/wkhtmltox-0.12.2.1_linux-wheezy-amd64.deb | dpkg -i wkhtmltox-0.12.2.1_linux-wheezy-amd64.deb 
+RUN wget http://downloads.sourceforge.net/project/wkhtmltopdf/0.12.2.1/wkhtmltox-0.12.2.1_linux-wheezy-amd64.deb -O /tmp/wkhtmltox.deb && dpkg -i wkhtmltox.deb && rm /tmp/wkhtmltox.deb
 # install and run the phpfarm script
 RUN git clone git://git.code.sf.net/p/phpfarm/code phpfarm
 
@@ -58,6 +58,7 @@ RUN rm -rf /var/www/*
 COPY var-www /var/www/
 COPY apache  /etc/apache2/
 
+RUN apt-get remove -y mysql-server-5.5
 RUN a2ensite php-5.2 php-5.3 php-5.4 php-5.5 php-5.6
 RUN a2enmod rewrite
 
