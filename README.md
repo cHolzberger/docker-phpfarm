@@ -52,12 +52,25 @@ Note: the entry point for this image has been defined as ''/bin/bash'' and it wi
 run our ''run.sh'' by default. You can specify other parameters to be run by bash
 of course.
 
+Apache Magic
+------------
+This images adds an automatic Virtual Host mapping to the source phpfarm image.
+
+VHost folder mapping works transparently inside this image.
+
+Let's say your docker container gets the ip 192.168.1.1. When you access http://192.168.1.1:8054 apache will serve the folder /var/www which matches default behaviour. When you add an alias for the ip (via /etc/hosts or dns), e.g. host1.local, and access it via its new name http://host1.local:8054 apache will serve the folder /var/www/host1/. If the alias is host1.ad.local.lan the directory will still be /var/www/host1, because only the first part of the alias name is used to determine the path to serve.
+
+When you access http://host2.whatever you'll get /var/www/host2 and so on... 
+
+The main purpose of this technique is to have your Projects dir mounted on /var/www with each sub-project below it. e.g. projekts/project-a, prjects/project-b ... so you can access them as project-a.whatever and project-b.whatever. In combination with phpfarm this gives project-a.whatever:8053 for project-a with php 5.3 or project-a.whatever:8054 for project-a with php verion 5.4. 
+
+This technique is powerfull with a wildcard dns string like *.mytestdomain which maps to exactly the same ip address for all subdomains. you'll never need to touch you apache config for VHost configuration again.
+
 To Do
 -----
 
 - [ ] adjust the build process to have a single file to configure PHP versions and ports
 - [ ] optimize the Dockerfile to be more space and update efficient
-- [ ] add more common PHP modules to be built
 
 Feedback
 --------
