@@ -32,7 +32,7 @@ RUN apt-get update && \
     libmcrypt-dev \
     libt1-dev \
     libltdl-dev \
-    libmhash-dev && apt-get build-dep php5
+    libmhash-dev && apt-get build-dep -y php5
 # wkhtmltopdf offical binary
 RUN wget http://downloads.sourceforge.net/project/wkhtmltopdf/0.12.2.1/wkhtmltox-0.12.2.1_linux-wheezy-amd64.deb | dpkg -i wkhtmltox-0.12.2.1_linux-wheezy-amd64.deb 
 # install and run the phpfarm script
