@@ -7,6 +7,8 @@ if [ ! -z "$APACHE_UID" ]; then
     chown -R wwwrun /var/lib/apache2
 fi
 
+#start hhvm server
+hhvm --mode daemon -vServer.Type=fastcgi -vServer.Port=9000
 
 apache2ctl start
 tail -f /var/log/apache2/error.log

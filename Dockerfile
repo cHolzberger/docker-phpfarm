@@ -57,6 +57,12 @@ RUN git clone git://git.code.sf.net/p/phpfarm/code phpfarm \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
+# hhvm 
+RUN apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0x5a16e7281be7a449 \
+&& echo deb http://dl.hhvm.com/debian wheezy main > /etc/apt/sources.list.d/hhvm.list \
+&& apt-get update \
+&& apt-get install -y hhvm
+
 # reconfigure Apache
 RUN rm -rf /var/www/*
 
