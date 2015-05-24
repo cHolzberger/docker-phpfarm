@@ -12,8 +12,15 @@
         Order allow,deny
         allow from all
     </Directory>
+		RewriteEngine on
 
-    ProxyPassMatch ^/(.*\.php(/.*)?)$ fcgi://127.0.0.1:9000/var/www/$1 
+		RewriteMap    lowercase int:tolower
+
+		RewriteCond   "${lowercase:%{HTTP_HOST}}"   "^([^.]+)*$"
+
+    RewriteRule ^/(.*\.php(/.*)?)$ fcgi://127.0.0.1:9000/var/www/%1$1 
+		RewriteRule   "^(.*)" "/var/www/%1$1"
+
 
     LogLevel warn
     ErrorLog ${APACHE_LOG_DIR}/error.log

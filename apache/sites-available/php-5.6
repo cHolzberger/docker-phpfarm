@@ -12,6 +12,12 @@
         Order allow,deny
         allow from all
     </Directory>
+RewriteEngine on
+
+RewriteMap    lowercase int:tolower
+
+RewriteCond   "${lowercase:%{HTTP_HOST}}"   "^([^.]+)*$"
+RewriteRule   "^(.*)" "/var/www/%1$1"
 
 
     FCGIWrapper /phpfarm/inst/php-5.6.1/bin/php-cgi .php
