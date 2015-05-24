@@ -31,7 +31,6 @@ configoptions="$configoptions \
 		--enable-shmop \
 	 	--with-libxml-dir=/usr \
 		--with-kerberos=/usr \
-		--with-openssl \
 		--enable-dbx \
 		--with-system-tzdata \
 		--with-mysql=/usr \
@@ -49,7 +48,6 @@ configoptions="$configoptions \
 		--with-jpeg-dir=/usr \
 		--with-png-dir \
 		--with-freetype-dir=/usr \
-		--with-t1lib \
 		--with-zlib-dir=/usr \
 		--with-gettext=/usr \
 		--enable-mbstring \
