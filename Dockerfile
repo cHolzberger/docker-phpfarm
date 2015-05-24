@@ -32,17 +32,22 @@ RUN apt-get update && \
     libmcrypt-dev \
     libt1-dev \
     libltdl-dev \
-    libmhash-dev && apt-get build-dep -y php5
+    libmhash-dev \
+    fontconfig \
+    libxrender1 \
+    xfonts-base \
+    xfonts-75dpi \ 
+    && apt-get build-dep -y php5
 # wkhtmltopdf offical binary
 RUN wget http://downloads.sourceforge.net/project/wkhtmltopdf/0.12.2.1/wkhtmltox-0.12.2.1_linux-wheezy-amd64.deb -O /tmp/wkhtmltox.deb && dpkg -i /tmp/wkhtmltox.deb && rm /tmp/wkhtmltox.deb
-# install and run the phpfarm script
-RUN git clone git://git.code.sf.net/p/phpfarm/code phpfarm
 
 # add customized configuration
-COPY phpfarm /phpfarm/src/
-
+COPY phpfarm /tmp/phpfarm
+# install and run the phpfarm script
 # compile, then delete sources (saves space)
-RUN cd /phpfarm/src && \
+RUN git clone git://git.code.sf.net/p/phpfarm/code phpfarm \
+&& cp -r /tmp/phpfarm/* /phpfarm/src \
+&& cd /phpfarm/src && \
     ./compile.sh 5.2.17 && \
     ./compile.sh 5.3.29 && \
     ./compile.sh 5.4.32 && \
