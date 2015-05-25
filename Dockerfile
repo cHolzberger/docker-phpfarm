@@ -71,6 +71,9 @@ RUN git clone git://git.code.sf.net/p/phpfarm/code phpfarm \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
+#set short_open_tag
+RUN sed -e "s/short_open_tag = Off/short_open_tag = On/g" -i /phpfarm/inst/php-*/lib/php.ini
+
 # reconfigure Apache
 RUN rm -rf /var/www/*
 
