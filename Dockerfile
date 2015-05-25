@@ -78,7 +78,8 @@ COPY var-www /var/www/
 COPY apache  /etc/apache2/
 
 RUN apt-get remove -y mysql-server-5.5
-RUN a2enmod rewrite
+RUN a2enmod rewrite proxy proxy_fcgi
+RUN a2enconf phpfarm
 RUN a2ensite hhvm php-5.3 php-5.4 php-5.5 php-5.6
 
 # set path
