@@ -56,6 +56,13 @@ wkhtmltopdf
 -----------
 This Build includes the offical wkhtmltox debian packages
 
+PhpMyAdmin
+----------
+
+PHP MyAdmin ist included inside the container, you can reach it by adding /phpmyadmin to the base url (http://whatever:8053/phpmyadmin...).
+
+It connects to Host "mysqldb".
+
 Apache Magic
 ------------
 This images adds an automatic Virtual Host mapping to the source phpfarm image.
@@ -67,7 +74,7 @@ Let's say your docker container gets the ip 192.168.1.1. When you access http://
 When you access http://host2.whatever you'll get /var/www/host2 and so on... 
 
 Please notice that the hostname always will be lowercased. You can only access folders / subdomains in lowercase.
-
+l
 The main purpose of this technique is to have your Projects dir mounted on /var/www with each sub-project below it. e.g. projekts/project-a, prjects/project-b ... so you can access them as project-a.whatever and project-b.whatever. In combination with phpfarm this gives project-a.whatever:8053 for project-a with php 5.3 or project-a.whatever:8054 for project-a with php verion 5.4. 
 
 This technique is powerfull with a wildcard dns string like *.mytestdomain which maps to exactly the same ip address for all subdomains. you'll never need to touch you apache config for VHost configuration again.
@@ -78,7 +85,7 @@ To Do
 
 - [ ] adjust the build process to have a single file to configure PHP versions and ports
 - [ ] optimize the Dockerfile to be more space and update efficient
-
+- [ ] Make phpmyadmin host configurable
 Feedback
 --------
 
