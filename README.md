@@ -35,6 +35,14 @@ way. Just run this:
 Please note that this image might be somewhat behind from what the Dockerfile would
 build, but my upload speed is too limited to upload a gigabyte in a timely fashion.
 
+
+Variables
+=========
+
+| Name               | Meaning            |
+|--------------------|--------------------|
+| PHP_DISPLAY_ERRORS | Display PHP Errors |
+
 Running the container
 ---------------------
 
