@@ -55,7 +55,7 @@ RUN wget http://download.gna.org/wkhtmltopdf/0.12/0.12.2.1/wkhtmltox-0.12.2.1_li
 RUN wget https://files.phpmyadmin.net/phpMyAdmin/4.4.11/phpMyAdmin-4.4.11-all-languages.tar.gz -O /tmp/phpmyadmin.tar.gz \
 && cd /opt \
 && tar xzf /tmp/phpmyadmin.tar.gz \
-&& mv phpMyAdmin-4.4.7-english/ phpmyadmin \
+&& mv phpMyAdmin-4.4.11-all-languages phpmyadmin \
 && chown www-data:www-data /opt/phpmyadmin
 
 COPY phpmyadmin /opt/phpmyadmin
