@@ -52,7 +52,7 @@ RUN apt-get build-dep -y php5
 # wkhtmltopdf offical binary
 RUN wget http://download.gna.org/wkhtmltopdf/0.12/0.12.2.1/wkhtmltox-0.12.2.1_linux-jessie-amd64.deb -O /tmp/wkhtmltox.deb && dpkg -i /tmp/wkhtmltox.deb && rm /tmp/wkhtmltox.deb
 
-RUN wget http://downloads.sourceforge.net/project/phpmyadmin/phpMyAdmin/4.4.7/phpMyAdmin-4.4.7-english.tar.gz -O /tmp/phpmyadmin.tar.gz \
+RUN wget https://files.phpmyadmin.net/phpMyAdmin/4.4.11/phpMyAdmin-4.4.11-all-languages.tar.gz -O /tmp/phpmyadmin.tar.gz \
 && cd /opt \
 && tar xzf /tmp/phpmyadmin.tar.gz \
 && mv phpMyAdmin-4.4.7-english/ phpmyadmin \
