@@ -7,6 +7,10 @@ if [ ! -z "$APACHE_UID" ]; then
     chown -R www-data /var/lib/apache2
 fi
 
+
+if [ ! -z "$PHP_DISPLAY_ERRORS" ]; then
+	sed -e "s/display_errors = On/display_errors = $PHP_DISPLAY_ERRORS/g" -i /phpfarm/inst/php-*/lib/php.ini
+fi
 #start hhvm server
 hhvm --mode daemon -vServer.Type=fastcgi -vServer.Port=9000 &
 

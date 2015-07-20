@@ -78,7 +78,9 @@ RUN git clone git://git.code.sf.net/p/phpfarm/code phpfarm \
 
 #set short_open_tag
 RUN sed -e "s/short_open_tag = Off/short_open_tag = On/g" -i /phpfarm/inst/php-*/lib/php.ini
+RUN sed -e "s/error_log = syslog/error_log = \/var\/log\/php.log/g" -i /phpfarm/inst/php-*/lib/php.ini
 
+RUN touch /var/log/php.log && chmod a+rw /var/log/php.log
 # reconfigure Apache
 RUN rm -rf /var/www/*
 
