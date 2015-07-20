@@ -66,7 +66,7 @@ RUN mkdir /usr/include/freetype2/freetype/ && ln -s /usr/include/freetype2/freet
 COPY phpfarm /tmp/phpfarm
 # install and run the phpfarm script
 # compile, then delete sources (saves space)
-RUN git clone git://git.code.sf.net/p/phpfarm/code phpfarm \
+RUN git clone https://github.com/cweiske/phpfarm.git phpfarm \
 && cp -r /tmp/phpfarm/* /phpfarm/src \
 && cd /phpfarm/src && \
     ./compile.sh 5.3.29 && \
