@@ -5,8 +5,13 @@ else
     LIBPATH="/lib/x86_64-linux-gnu/"
 fi
 
+etcbasedir="/etc/php/$version"
+mkdir -p "$etcbasedir"
+
 
 configoptions="$configoptions \
+		--with-config-file-path=$etcbasedir
+		--with-config-file-scan-dir=$etcbasedir/conf.d
     --enable-fastcgi \
     --with-bz2 \
     --with-curl \
@@ -64,4 +69,4 @@ configoptions="$configoptions \
 		--enable-zip 
 "
 
-echo $configoptions
+

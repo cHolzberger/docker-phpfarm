@@ -31,7 +31,9 @@ RUN apt-get update && \
     xfonts-base \
     xfonts-75dpi \
     libssl1.0.0 \
-    libssl1.0.0-dbg
+    libssl1.0.0-dbg \
+		imagemagick \
+		xvfb
 
 RUN a2enmod rewrite
 #add build deps manually
@@ -44,13 +46,15 @@ RUN apt-get install -y libfreetype6-dev \
     libmcrypt-dev \
     libltdl-dev \
     libmhash-dev \
-    libssl-dev
+    libssl-dev \
+		graphicsmagick-libmagick-dev-compat
 
 RUN apt-get install -y lemon
 #php5 build deps
 RUN apt-get build-dep -y php5 
 # wkhtmltopdf offical binary
-RUN wget http://download.gna.org/wkhtmltopdf/0.12/0.12.2.1/wkhtmltox-0.12.2.1_linux-jessie-amd64.deb -O /tmp/wkhtmltox.deb && dpkg -i /tmp/wkhtmltox.deb && rm /tmp/wkhtmltox.deb
+WKHTMLTOPDF_URL="https://bitbucket.org/wkhtmltopdf/wkhtmltopdf/downloads/wkhtmltox-0.13.0-alpha-7b36694_linux-jessie-amd64.deb"
+RUN wget $WKHTMLTOPDF_URL -O /tmp/wkhtmltox.deb && dpkg -i /tmp/wkhtmltox.deb && rm /tmp/wkhtmltox.deb
 
 RUN wget https://files.phpmyadmin.net/phpMyAdmin/4.4.11/phpMyAdmin-4.4.11-all-languages.tar.gz -O /tmp/phpmyadmin.tar.gz \
 && cd /opt \
