@@ -86,6 +86,14 @@ RUN sed -e "s/short_open_tag = Off/short_open_tag = On/g" -i /phpfarm/inst/php-*
 RUN sed -e "s/error_log = syslog/error_log = \/var\/log\/php.log/g" -i /phpfarm/inst/php-*/lib/php.ini
 
 RUN touch /var/log/php.log && chmod a+rw /var/log/php.log
+
+RUN cp /phpfarm/inst/php-5.3.29/lib/php.ini /etc/php/5.3.29/
+RUN cp /phpfarm/inst/php-5.4.32/lib/php.ini /etc/php/5.4.32/
+RUN cp /phpfarm/inst/php-5.5.16/lib/php.ini /etc/php/5.5.16/
+RUN cp /phpfarm/inst/php-5.6.1/lib/php.ini /etc/php/5.6.1/
+
+
+
 # reconfigure Apache
 RUN rm -rf /var/www/*
 
